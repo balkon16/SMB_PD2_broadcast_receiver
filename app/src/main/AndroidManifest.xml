@@ -22,6 +22,11 @@
                 <action android:name="com.hfad.pracadomowanr2.produkty.NEW_PRODUCT_ADDED" />
             </intent-filter>
         </receiver>
+
+        <service
+            android:name="com.hfad.pracadomowanr2broadcastreceiver.NotificationService"
+            android:enabled="true"
+            android:exported="true" />
     </application>
 
 </manifest>
