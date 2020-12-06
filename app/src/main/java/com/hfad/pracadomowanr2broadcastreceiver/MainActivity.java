@@ -15,8 +15,6 @@ public class MainActivity extends AppCompatActivity {
 
     ProductBroadcastReceiver receiver;
     IntentFilter intentFilter;
-    private NotificationService notifier;
-    private boolean bound = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,15 +24,11 @@ public class MainActivity extends AppCompatActivity {
         receiver = new ProductBroadcastReceiver();
         intentFilter = new IntentFilter("com.hfad.pracadomowanr2.produkty.NEW_PRODUCT_ADDED");
 
-        // TODO: obsłuż intent z poziomu Service
     }
 
     @Override
     protected void onStart(){
         super.onStart();
-        Intent intent = new Intent(this, NotificationService.class);
-
-
     }
 
     @Override

@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">PracaDomowaNr2BroadcastReceiver</string>
     <string name="chooser_title">Chooser</string>
+    <string name="new_product_added_notif">Nowy produkt dodany: </string>
+    <string name="see_details_notif">Kliknij, żeby zobaczyć szczegóły.</string>
+    <string name="notif_action_button">Kliknij</string>
 </resources>
