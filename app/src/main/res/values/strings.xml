@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">PracaDomowaNr2BroadcastReceiver</string>
+    <string name="chooser_title">Chooser</string>
 </resources>

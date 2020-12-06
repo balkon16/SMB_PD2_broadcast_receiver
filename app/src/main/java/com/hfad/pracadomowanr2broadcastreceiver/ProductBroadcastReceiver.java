@@ -23,6 +23,7 @@ public class ProductBroadcastReceiver extends BroadcastReceiver {
             NotificationService.NotificationServiceBinder notifierBinder =
                     (NotificationService.NotificationServiceBinder) binder;
             notifier = notifierBinder.getNotifier();
+            //TODO: przekazać dane dla Intent (lub cały Intent) do service
             notifier.makeNotification("Testowo!");
             bound = true;
         }

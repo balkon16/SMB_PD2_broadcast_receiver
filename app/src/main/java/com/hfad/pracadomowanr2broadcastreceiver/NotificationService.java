@@ -5,12 +5,18 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
+import android.content.ComponentName;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
+import android.net.Uri;
 import android.os.Binder;
 import android.os.Build;
 import android.os.IBinder;
 
 import androidx.core.app.NotificationCompat;
+
+import java.util.List;
 
 public class NotificationService extends Service {
 
@@ -73,7 +79,7 @@ public class NotificationService extends Service {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
         {
-            System.out.println("ugabuga");
+//            System.out.println("ugabuga");
             String channelId = "Your_channel_id";
             NotificationChannel channel = new NotificationChannel(
                     channelId,
@@ -84,6 +90,51 @@ public class NotificationService extends Service {
         }
 
         notificationManager.notify(123, mBuilder.build());
+
+        Intent intent = new Intent();
+        final ComponentName cn = new ComponentName("com.hfad.pracadomowanr2", "com.hfad.pracadomowanr2.produkty.ProductDetailsActivity");
+        intent.setComponent(cn);
+//        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+
+//        Intent intent = new Intent();
+//        intent.setClassName("com.hfad.pracadomowanr2", ".produkty.ProductDetailsActivity");
+
+//        intent.setComponent(new ComponentName("com.hfad.pracadomowanr2."))
+
+//        intent.setComponent(new ComponentName("com.hfad.pracadomowanr2.produkty.ProductDetailsActivity"));
+//        startActivity(intent);
+
+//        Intent launchIntent = getApplicationContext().getPackageManager().getLaunchIntentForPackage("com.hfad.pracadomowanr2.produkty.ProductDetailsActivity");
+//        startActivity(launchIntent);
+
+//        Uri number = Uri.parse("tel:5551234");
+//        Intent callIntent = new Intent(Intent.ACTION_DIAL, number);
+//
+//        PackageManager packageManager = getPackageManager();
+//        List<ResolveInfo> activities = packageManager.queryIntentActivities(callIntent,
+//                PackageManager.MATCH_DEFAULT_ONLY);
+//        boolean isIntentSafe = activities.size() > 0;
+//
+//        System.out.println("Size: " + activities.size());
+//
+//        // Always use string resources for UI text.
+//// This says something like "Share this photo with"
+//        String title = getResources().getString(R.string.chooser_title);
+//// Create intent to show chooser
+//        Intent chooser = Intent.createChooser(callIntent, title);
+//
+//// Verify the intent will resolve to at least one activity
+//        if (callIntent.resolveActivity(getPackageManager()) != null) {
+//            startActivity(chooser);
+//        }
+
+
+//        if (isIntentSafe) {
+//            startActivity(callIntent);
+//        }
+
+
 
 
     }

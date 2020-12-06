@@ -19,7 +19,7 @@
 
         <receiver android:name=".ProductBroadcastReceiver" >
             <intent-filter>
-                <action android:name="com.hfad.pracadomowanr2.produkty.NEW_PRODUCT_ADDED" />
+                <action android:name="com.hfad.pracadomowanr2.produkty.ProductDetailsActivity" />
             </intent-filter>
         </receiver>
 
