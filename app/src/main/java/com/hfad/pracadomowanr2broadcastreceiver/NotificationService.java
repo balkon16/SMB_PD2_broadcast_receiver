@@ -34,14 +34,15 @@ public class NotificationService extends Service {
 
     public void makeNotification(String textContent){
 
-        NotificationCompat.Builder builder =
-                new NotificationCompat.Builder(this)
-                        .setSmallIcon(android.R.drawable.sym_def_app_icon)
-                        .setContentTitle("title")
-                        .setContentText(textContent)
-                        .setPriority(NotificationCompat.PRIORITY_HIGH)
-                        .setVibrate(new long[]{0, 1000})
-                        .setAutoCancel(true);
+//        NotificationCompat.Builder builder =
+//                new NotificationCompat.Builder(this)
+//                        .setSmallIcon(android.R.mipmap.sym_def_app_icon)
+////                        .setSmallIcon(android.R.drawable.sym_def_app_icon)
+//                        .setContentTitle("title")
+//                        .setContentText(textContent)
+//                        .setPriority(NotificationCompat.PRIORITY_HIGH)
+//                        .setVibrate(new long[]{0, 1000})
+//                        .setAutoCancel(true);
 
         // Tworzymy akcję
 //        Intent actionIntent = new Intent(this, MainActivity.class);
@@ -61,27 +62,28 @@ public class NotificationService extends Service {
 //        notificationManager.notify(123, builder.build());
 //        System.out.println("makeNotification ended!");
 
-//        NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-//        NotificationCompat.Builder mBuilder =
-//                new NotificationCompat.Builder(this.getApplicationContext(), "notify_001");
+        NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        NotificationCompat.Builder mBuilder =
+                new NotificationCompat.Builder(this.getApplicationContext(), "notify_001");
 //        mBuilder.setSmallIcon(R.mipmap.ic_launcher_round);
-//        mBuilder.setContentTitle("Your Title");
-//        mBuilder.setContentText("Your text");
-//        mBuilder.setPriority(Notification.PRIORITY_HIGH);
-//
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
-//        {
-//            System.out.println("ugabuga");
-//            String channelId = "Your_channel_id";
-//            NotificationChannel channel = new NotificationChannel(
-//                    channelId,
-//                    "Channel human readable title",
-//                    NotificationManager.IMPORTANCE_HIGH);
-//            notificationManager.createNotificationChannel(channel);
-//            mBuilder.setChannelId(channelId);
-//        }
-//
-//        notificationManager.notify(123, mBuilder.build());
+        mBuilder.setSmallIcon(android.R.drawable.sym_def_app_icon);
+        mBuilder.setContentTitle("Your Title");
+        mBuilder.setContentText("Your text");
+        mBuilder.setPriority(Notification.PRIORITY_HIGH);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+        {
+            System.out.println("ugabuga");
+            String channelId = "Your_channel_id";
+            NotificationChannel channel = new NotificationChannel(
+                    channelId,
+                    "Channel human readable title",
+                    NotificationManager.IMPORTANCE_HIGH);
+            notificationManager.createNotificationChannel(channel);
+            mBuilder.setChannelId(channelId);
+        }
+
+        notificationManager.notify(123, mBuilder.build());
 
 
     }
