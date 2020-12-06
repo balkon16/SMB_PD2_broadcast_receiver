@@ -27,9 +27,7 @@ public class ProductBroadcastReceiver extends BroadcastReceiver {
             System.out.println("OnServiceConnected");
             NotificationService.NotificationServiceBinder notifierBinder =
                     (NotificationService.NotificationServiceBinder) binder;
-            if (! bound){
-                notifier = notifierBinder.getNotifier();
-            }
+            notifier = notifierBinder.getNotifier();
 
             notifier.makeNotification(productIntentExtras);
             bound = true;
@@ -37,7 +35,6 @@ public class ProductBroadcastReceiver extends BroadcastReceiver {
 
         @Override
         public void onServiceDisconnected(ComponentName componentName) {
-            Log.d("tag1", "Service disconnected.");
             bound = false;
         }
     };
@@ -47,20 +44,11 @@ public class ProductBroadcastReceiver extends BroadcastReceiver {
 
         if (bound) {
             context.unbindService(connection);
-            Log.d("tag1", "Receiver - unbindService");
             bound = false;
         }
 
-        Log.d("tag1", "wartość bound: " + bound);
         Bundle extras = intent.getExtras();
         productIntentExtras = intent.getExtras();
-
-        String msg = "NAME: " + extras.getString("NAME") + System.lineSeparator() +
-                "PRICE: " + extras.getDouble("PRICE", 0.0) + System.lineSeparator() +
-                "QUANTITY: " + extras.getDouble("QUANTITY", 0.0) + System.lineSeparator() +
-                "UNIT: " + extras.getString("UNIT");
-        System.out.println(msg);
-        Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
 
         Intent new_intent = new Intent(context, NotificationService.class);
 

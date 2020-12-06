@@ -32,21 +32,15 @@ public class NotificationService extends Service {
 
     @Override
     public void onCreate() {
-        Log.d("tag1", "Service - onCreate.");
-
         super.onCreate();
     }
 
     @Override
     public IBinder onBind(Intent intent) {
-        Log.d("tag1", "Service - onBind.");
         return binder;
     }
 
     public void makeNotification(Bundle productInfo){
-
-        System.out.println("makeNotification started!");
-
         Intent intent = new Intent();
         final ComponentName cn = new ComponentName("com.hfad.pracadomowanr2", "com.hfad.pracadomowanr2.produkty.ProductDetailsActivity");
         intent.setComponent(cn);
