@@ -39,6 +39,7 @@ public class NotificationService extends Service {
 
     @Override
     public IBinder onBind(Intent intent) {
+        Log.d("tag1", "Service - onBind.");
         return binder;
     }
 

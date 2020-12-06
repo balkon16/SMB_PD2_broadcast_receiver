@@ -23,6 +23,7 @@ public class ProductBroadcastReceiver extends BroadcastReceiver {
     private ServiceConnection connection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName componentName, IBinder binder) {
+            Log.d("tag1", "Receiver - onServiceConnected.");
             System.out.println("OnServiceConnected");
             NotificationService.NotificationServiceBinder notifierBinder =
                     (NotificationService.NotificationServiceBinder) binder;
@@ -44,6 +45,12 @@ public class ProductBroadcastReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
 
+        if (bound) {
+            context.unbindService(connection);
+            Log.d("tag1", "Receiver - unbindService");
+            bound = false;
+        }
+
         Log.d("tag1", "wartość bound: " + bound);
         Bundle extras = intent.getExtras();
         productIntentExtras = intent.getExtras();
@@ -59,11 +66,6 @@ public class ProductBroadcastReceiver extends BroadcastReceiver {
 
         context.bindService(new_intent, connection, Context.BIND_AUTO_CREATE);
 
-//
-        if (bound) {
-            context.unbindService(connection);
-            bound = false;
-        }
     }
 
 
